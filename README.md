@@ -2,6 +2,8 @@
 
 ## Elevator Pitch
 
+- Have you ever wanted to remember what your best bench was? Do you want to physically see the progress that you make in the gym? Want to brag to your friends about those massive winter gains or the summer cut? With the absolute dullest blade technology I could find I present to you the Gym Bro Buddy<sup>©</sup> it will keep track of your stats, make you training plans, calculate your ORM and almost nothing else! What a steal!
+
 ## Requirements
 
 ### Authentication:
@@ -18,7 +20,7 @@ Workout Buddy web development idea? Gym bro buddy, bench bro buddy Buddy
 - Create workout plans for push pull and legs
 - Remember your favorite exercises?
 - Tracker
-  -Track progress with graphs
+-Track progress with graphs
 - Have users
 - Send messages to friends and look at their live time stats
 
