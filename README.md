@@ -12,8 +12,7 @@
 - I'm going to track the data of the user for their gym stats and graph it visually for them. They can see their progress from numbers pulled from the database that I will maintain.
 ### WebSocket data: 
 - This will be pulling the most recent data and being able to share stats with friends. Everyone wants to show off to friends, or if you just want to see where your at so you would be able to pull up live time feed and see how its going for them
-
-![Sketch Image didn't display] (https://drive.google.com/file/d/1BpJSfKvmnNguvERe_hAAiyqEo-K1goej/view?usp=sharing)
+- ![Image of my sketch](https://github.com/Dashx7/Startup/blob/main/IMG_7540.JPG)
 
 ## Notes
 Check out [My Google Doc](https://docs.google.com/document/d/1kt-fd8KEM64hTFWVifAqa3g5ZAjUoWANesyJ6xcsqHk/edit)
