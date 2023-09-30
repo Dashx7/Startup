@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Settings</title>
+</head>
+
+<body>
+  <!-- This is the standarized template-->
+  <div id="header-container"></div>
+  <script>
+    // Use JavaScript to load and insert the template into the page
+    fetch('template.html')
+        .then(response => response.text())
+        .then(template => {
+            document.getElementById('header-container').innerHTML = template;
+        });
+  </script>
+    
+    <!-- Other content for your webpage -->
+    
+</body>
+</html>

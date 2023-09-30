@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Activity Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Add some basic styles for the page layout */
+    body {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    #left-container {
+      flex: 1;
+      padding: 20px;
+      text-align: center;
+    }
+
+    #right-container {
+      flex: 2;
+      float: right;
+      margin-top: -50px;
+      margin-left: 10px;
+      padding: 5px; 
+      max-width: 100%; 
+      height: auto;
+    }
+
+    button {
+      display: block;
+      margin-bottom: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      width: 70px;
+    }
+
+    /* Styles for the modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      width: 50%;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      display: inline;
+    }
+
+    .content {
+      display: inline;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- This is the standarized template-->
+  <div id="header-container"></div>
+  <script>
+    // Use JavaScript to load and insert the template into the page
+    fetch('template.html')
+      .then(response => response.text())
+      .then(template => {
+        document.getElementById('header-container').innerHTML = template;
+      });
+  </script>
+
+  <body class="content">
+    <div id="left-container">
+      <button id="addButton">Add</button>
+      <button id="viewButton">View</button>
+    </div>
+    <div id="right-container">
+      <img src="images/Graph.jpg" alt="Large Image">
+    </div>
+
+    <!-- Modal for adding activity -->
+    <div class="modal" id="addModal">
+      <div class="modal-content">
+        <h2>Add Activity</h2>
+        <label for="activity">Activity:</label>
+        <select id="activity" name="activity">
+          <option value="bench">Bench Press</option>
+          <option value="incline_bench">Incline Bench Press</option>
+          <option value="squat">Squat</option>
+          <option value="deadlift">Deadlift</option>
+        </select><br><br>
+        <label for="weight">Weight (lbs):</label>
+        <input type="number" id="weight" name="weight" required><br><br>
+        <label for="sets">Sets:</label>
+        <input type="number" id="sets" name="sets" required><br><br>
+        <label for="reps">Reps:</label>
+        <input type="number" id="reps" name="reps" required><br><br>
+        <button id="saveActivity">Save</button>
+        <button id="closeModal">Close</button>
+      </div>
+    </div>
+
+    <script>
+      // Get references to elements
+      const addButton = document.getElementById("addButton");
+      const viewButton = document.getElementById("viewButton");
+      const addModal = document.getElementById("addModal");
+      const closeModal = document.getElementById("closeModal");
+
+      // Show the add modal when the "Add" button is clicked
+      addButton.addEventListener("click", () => {
+        addModal.style.display = "block";
+      });
+
+      // Close the add modal when the "Close" button is clicked
+      closeModal.addEventListener("click", () => {
+        addModal.style.display = "none";
+      });
+
+      // Show an alert when the "View" button is clicked
+      viewButton.addEventListener("click", () => {
+        alert("You clicked View");
+      });
+    </script>
+
+  </body>
+
+</html>
