@@ -1,15 +1,27 @@
+:root {
+    --text-color: #f9fbee;
+    --background-color: #070802;
+    --primary-color: #170869;
+    --secondary-color: #1f092a;
+    --accent-color: #2e64d1;
+}
+
+body {
+    color: var(--text-color);
+    background-color: var(--background-color);
+    padding-top: 50px;
+}
+
+/* And so on for the other colors */
+   
 .stickyfooter {
     background-color: #333;
     color: #fff;
-    padding: 20px;
+    padding: 8x;
     text-align: center;
     position: fixed;
     bottom: 0;
     width: 100%;
-}
-
-a {
-    color: white;
 }
 
 header {
@@ -20,6 +32,13 @@ header {
     padding: 10px 0;
     /* Add some padding for spacing */
     font-family: Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    position: fixed;    
+    top: 0;
+    left: 0;
+    width: 100%;
+    
 }
 
 .nav-container {
@@ -47,12 +66,12 @@ header {
     /* Text color for links */
 }
 
-p,
-a {
+p, a {
     display: inline-block;
     vertical-align: middle;
 }
-#Whacky {
+
+/* #Whacky {
     style="background:url(http://farm4.static.flickr.com/3618/3697567056_45ae16f677_o.gif)"
-} //FIXME
+} //FIXME */
 

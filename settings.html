@@ -1,8 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Settings</title>
+  <meta charset="UTF-8">
+  <title>Settings</title>
+  <style>
+    #formPage {
+      /* padding: 40px; */
+      float: up;
+      /* Add float property */
+    }
+    #rat-image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      z-index: 9999; /* Make sure the image is on top of everything else */
+      animation: moveImage 1s linear; /* Call the moveImage animation */
+    }
+    @keyframes moveImage {
+    0% {
+        transform: scale(1); 
+    }
+    100% {
+        transform: scale(5);
+    }
+}
+    /* #rat-image:hover {
+      transform: translate(-50%, -50%) rotate(360deg);
+    } */
+    
+  
+  </style>
 </head>
 
 <body>
@@ -11,13 +41,79 @@
   <script>
     // Use JavaScript to load and insert the template into the page
     fetch('template.html')
-        .then(response => response.text())
-        .then(template => {
-            document.getElementById('header-container').innerHTML = template;
-        });
+      .then(response => response.text())
+      .then(template => {
+        document.getElementById('header-container').innerHTML += template;
+      });
   </script>
-    
-    <!-- Other content for your webpage -->
-    
+
+  <div  id = "formPage">
+    <h1>Settings</h1>
+    <form id="settingsForm">
+      <label for="username">Set Username:</label>
+      <input type="text" id="username" name="username" required><br><br>
+      <label for="unit">Default Unit of Measurement:</label>
+      <select id="unit" name="unit">
+        <option value="lbs">lbs</option>
+        <option value="kgs">kgs</option>
+      </select><br><br>
+      <button type="submit">Save</button>
+    </form>
+
+  <!-- Add the button and image elements -->
+  <button id="rat-button">Rat</button>
+  <img id="rat-image" src="images/RAT.png" alt="Rat">
+
+  <!-- Add the JavaScript code to handle the button click -->
+
+  </div>
+
+
+  <script>
+    const ratButton = document.getElementById("rat-button");
+    const ratImage = document.getElementById("rat-image");
+
+    ratButton.addEventListener("click", () => {
+      ratImage.style.display = "block";
+    });
+    ratImage.addEventListener("transitionend", () => {
+      ratImage.style.display = "none";
+    });
+
+    // Get references to elements
+    const settingsForm = document.getElementById("settingsForm");
+    const usernameInput = document.getElementById("username");
+    const unitSelect = document.getElementById("unit");
+
+    // Load the user's settings when the page loads
+    window.addEventListener("load", () => {
+      // Get the user's settings from local storage
+      const username = localStorage.getItem("username");
+      const unit = localStorage.getItem("unit");
+
+      // Set the form values to the user's settings
+      usernameInput.value = username;
+      unitSelect.value = unit;
+    });
+
+    // Save the user's settings when the form is submitted
+    settingsForm.addEventListener("submit", (event) => {
+      //event.preventDefault();
+
+      // Get the form values
+      const username = usernameInput.value;
+      const unit = unitSelect.value;
+
+      // Save the user's settings to local storage
+      localStorage.setItem("username", username);
+      localStorage.setItem("unit", unit);
+
+      // Show a success message
+      alert("Settings saved!");
+    });
+  </script>
+
+
 </body>
+
 </html>
