@@ -11,15 +11,16 @@
 
     #left-container {
       flex: 1;
-      padding: 100px;
+      padding-left: 50px;
+      padding: 10px;
       text-align: center;
-
+      display: inline-block;
     }
 
     #right-container {
       flex: 2;
-      float: up;
-      margin-top: -50px;
+      float: right;
+      margin-top: 50px;
       margin-left: 10px;
       padding: 5px; 
       max-width: 100%; 
@@ -60,10 +61,6 @@
       display: inline;
     }
 
-    .content {
-      display: inline;
-    }
-
   </style>
 </head>
 
@@ -79,7 +76,7 @@
       });
   </script>
 
-  <body class="content">
+  <body class="mycontent">
     <div id="left-container">
       <button id="addButton">Add</button>
       <button id="viewButton">View</button>

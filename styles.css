@@ -4,12 +4,13 @@
     --primary-color: #170869;
     --secondary-color: #1f092a;
     --accent-color: #2e64d1;
-}
+} /* Define the stylized colors as variables */
 
 body {
     color: var(--text-color);
     background-color: var(--background-color);
-    padding-top: 50px;
+    padding-top: 0px;
+    margin-top: 0px;
 }
 
 /* And so on for the other colors */
@@ -23,11 +24,8 @@ body {
     bottom: 0;
     width: 100%;
 }
-body {
-    margin: 0;
-  }
 
-header {
+#header-container {
     background-color: #333;
     /* Background color for the header */
     color: #fff;
@@ -37,7 +35,7 @@ header {
     font-family: Arial, sans-serif;
     font-size: 140%;
     font-weight: bold;
-    margin-top: 0px;
+    margin-top: 0px; /* So the header doesn't overlap the content */
 }
 
 .nav-container {

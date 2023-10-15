@@ -7,32 +7,38 @@
   <title>Settings</title>
   <style>
     #formPage {
-      /* padding: 40px; */
+      font-size: 20px;
+      /* Increase the font size */
       float: up;
-      /* Add float property */
+      padding: 5px;
+      padding-left: 25px;
     }
+
     #rat-image {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       display: none;
-      z-index: 9999; /* Make sure the image is on top of everything else */
-      animation: moveImage 1s linear; /* Call the moveImage animation */
+      z-index: 9999;
+      /* Make sure the image is on top of everything else */
+      animation: moveImage 1s linear;
+      /* Call the moveImage animation */
     }
+
     @keyframes moveImage {
-    0% {
-        transform: scale(1); 
-    }
-    100% {
+      0% {
+        transform: scale(1);
+      }
+
+      100% {
         transform: scale(5);
+      }
     }
-}
+
     /* #rat-image:hover {
       transform: translate(-50%, -50%) rotate(360deg);
     } */
-    
-  
   </style>
 </head>
 
@@ -48,7 +54,7 @@
       });
   </script>
 
-  <div  id = "formPage">
+  <div id="formPage">
     <h1>Settings</h1>
     <form id="settingsForm">
       <label for="username">Set Username:</label>
@@ -61,11 +67,11 @@
       <button type="submit">Save</button>
     </form>
 
-  <!-- Add the button and image elements -->
-  <button id="rat-button">Rat</button>
-  <img id="rat-image" src="images/RAT.png" alt="Rat">
+    <!-- Add the button and image elements -->
+    <button id="rat-button">Rat</button>
+    <img id="rat-image" src="images/RAT.png" alt="Rat">
 
-  <!-- Add the JavaScript code to handle the button click -->
+    <!-- Add the JavaScript code to handle the button click -->
 
   </div>
 
