@@ -17,7 +17,8 @@
 ## Notes
 Check out [My Google Doc](https://docs.google.com/document/d/1kt-fd8KEM64hTFWVifAqa3g5ZAjUoWANesyJ6xcsqHk/edit)
 Workout Buddy web development idea? Gym bro buddy, bench bro buddy Buddy
-- ./deployFiles.sh -k <yourpemkey> -h <yourdomain> -s simon
+- ./deployFiles.sh -k <yourpemkey> -h <yourdomain> -s <type>
+- ./deployFiles.sh -k ../JoshWiseman.pem -h JoshWiseman.click -s startup
 - Change units
 - Predict stats from other stats, like incline bench from regular bench
 - Create workout plans for push pull and legs
