@@ -59,76 +59,85 @@
 
   <div class="input-box">
     <label for="weight">Weight:</label>
-    <input type="number" id="weight" name="weight">
+    <input type="number" id="weight" name="weight" oninput="checkInputs()">
     <label for="reps">Reps:</label>
-    <input type="number" id="reps" name="reps">
-    <button onclick="calculate()">Calculate</button>
+    <input type="number" id="reps" name="reps" oninput="checkInputs()">
+    <button id="calculate-btn" onclick="calculateAll()" disabled>Calculate</button>
   </div>
   <div class="output-box">
-    <label for="result">Result:</label>
-    <input type="number" id="result" name="result" readonly>
     <div class="output-grid">
       <div>1 Rep Max:</div>
-      <div id="one-rep-max"></div>
+      <div id="rep-max-1"></div>
       <div>2 Rep Max:</div>
-      <div id="two-rep-max"></div>
+      <div id="rep-max-2"></div>
       <div>3 Rep Max:</div>
-      <div id="three-rep-max"></div>
+      <div id="rep-max-3"></div>
       <div>4 Rep Max:</div>
-      <div id="four-rep-max"></div>
+      <div id="rep-max-4"></div>
       <div>5 Rep Max:</div>
-      <div id="five-rep-max"></div>
+      <div id="rep-max-5"></div>
       <br>
       <!-- To break it in half, probably a better way to do this -->
       <div>6 Rep Max:</div>
-      <div id="six-rep-max"></div>
+      <div id="rep-max-6"></div>
       <div>7 Rep Max:</div>
-      <div id="seven-rep-max"></div>
+      <div id="rep-max-7"></div>
       <div>8 Rep Max:</div>
-      <div id="eight-rep-max"></div>
+      <div id="rep-max-8"></div>
       <div>9 Rep Max:</div>
-      <div id="nine-rep-max"></div>
+      <div id="rep-max-9"></div>
       <div>10 Rep Max:</div>
-      <div id="ten-rep-max"></div>
+      <div id="rep-max-10"></div>
     </div>
   </div>
 
   <script>
-    function calculate() {
+    function checkInputs() {
       const weight = document.getElementById("weight").value;
       const reps = document.getElementById("reps").value;
-      const result = weight * reps;
-      document.getElementById("result").value = result;
+      const calculateBtn = document.getElementById("calculate-btn");
 
-      const oneRepMax = Math.round(weight * (1 + reps / 30));
-      document.getElementById("one-rep-max").textContent = oneRepMax;
+      if (weight && reps) { // If both inputs are filled
+        calculateBtn.disabled = false;
+        calculateBtn.style.backgroundColor = "#333";
+      } else { // If either input is empty
+        calculateBtn.disabled = true;
+        calculateBtn.style.backgroundColor = "#555";
+      }
+    }
 
+    function calculateORM() {
+      const weight = document.getElementById("weight").value;
+      const reps = document.getElementById("reps").value;
+      denominator = 1.0278 - 0.0278 * reps;
+      const orm = weight / denominator;
+      console.log("ORM: " + orm);
+      return orm;
+    }
+    function calculateAll() {
+      const weight = document.getElementById("weight").value;
+      const reps = document.getElementById("reps").value;
+
+      const oneRepMax = Math.round(calculateORM());
+      document.getElementById("rep-max-1").textContent = oneRepMax;
       const twoRepMax = Math.round(oneRepMax * 0.95);
-      document.getElementById("two-rep-max").textContent = twoRepMax;
-
+      document.getElementById("rep-max-2").textContent = twoRepMax;
       const threeRepMax = Math.round(oneRepMax * 0.93);
-      document.getElementById("three-rep-max").textContent = threeRepMax;
-
+      document.getElementById("rep-max-3").textContent = threeRepMax;
       const fourRepMax = Math.round(oneRepMax * 0.9);
-      document.getElementById("four-rep-max").textContent = fourRepMax;
-
+      document.getElementById("rep-max-4").textContent = fourRepMax;
       const fiveRepMax = Math.round(oneRepMax * 0.87);
-      document.getElementById("five-rep-max").textContent = fiveRepMax;
-
+      document.getElementById("rep-max-5").textContent = fiveRepMax;
       const sixRepMax = Math.round(oneRepMax * 0.85);
-      document.getElementById("six-rep-max").textContent = sixRepMax;
-
+      document.getElementById("rep-max-6").textContent = sixRepMax;
       const sevenRepMax = Math.round(oneRepMax * 0.83);
-      document.getElementById("seven-rep-max").textContent = sevenRepMax;
-
+      document.getElementById("rep-max-7").textContent = sevenRepMax;
       const eightRepMax = Math.round(oneRepMax * 0.8);
-      document.getElementById("eight-rep-max").textContent = eightRepMax;
-
+      document.getElementById("rep-max-8").textContent = eightRepMax;
       const nineRepMax = Math.round(oneRepMax * 0.77);
-      document.getElementById("nine-rep-max").textContent = nineRepMax;
-
+      document.getElementById("rep-max-9").textContent = nineRepMax;
       const tenRepMax = Math.round(oneRepMax * 0.75);
-      document.getElementById("ten-rep-max").textContent = tenRepMax;
+      document.getElementById("rep-max-10").textContent = tenRepMax;
     }
   </script>
 

@@ -4,7 +4,9 @@
     --primary-color: #170869;
     --secondary-color: #1f092a;
     --accent-color: #2e64d1;
-} /* Define the stylized colors as variables */
+}
+
+/* Define the stylized colors as variables */
 
 body {
     color: var(--text-color);
@@ -14,7 +16,7 @@ body {
 }
 
 /* And so on for the other colors */
-   
+
 .stickyfooter {
     background-color: #333;
     color: #fff;
@@ -35,7 +37,8 @@ body {
     font-family: Arial, sans-serif;
     font-size: 140%;
     font-weight: bold;
-    margin-top: 0px; /* So the header doesn't overlap the content */
+    margin-top: 0px;
+    /* So the header doesn't overlap the content */
 }
 
 .nav-container {
@@ -63,12 +66,27 @@ body {
     /* Text color for links */
 }
 
-p, a {
+p,
+a {
     display: inline-block;
     vertical-align: middle;
+}
+
+#calculate-btn {
+    font-size: 16px;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#calculate-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
 
 /* #Whacky {
     style="background:url(http://farm4.static.flickr.com/3618/3697567056_45ae16f677_o.gif)"
 } //FIXME */
-
