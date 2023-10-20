@@ -14,6 +14,13 @@
 - This will be pulling the most recent data and being able to share stats with friends. Everyone wants to show off to friends, or if you just want to see where your at so you would be able to pull up live time feed and see how its going for them
 - ![Image of my sketch](https://github.com/Dashx7/Startup/blob/main/IMG_7540.JPG)
 
+## TODO
+- Holdiay web pages
+- Predict stats from other stats?
+- The actual Node.js tracker and grapher
+- The send message thing
+
+
 ## Notes
 Check out [My Google Doc](https://docs.google.com/document/d/1kt-fd8KEM64hTFWVifAqa3g5ZAjUoWANesyJ6xcsqHk/edit)
 Workout Buddy web development idea? Gym bro buddy, bench bro buddy Buddy
@@ -22,7 +29,6 @@ Workout Buddy web development idea? Gym bro buddy, bench bro buddy Buddy
 - Change units
 - Predict stats from other stats, like incline bench from regular bench
 - Create workout plans for push pull and legs
-- Remember your favorite exercises?
 - Tracker
 -Track progress with graphs
 - Have users
