@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     /* Add some basic styles for the page layout */
-
     #left-container {
       flex: 1;
       padding-left: 50px;
@@ -22,8 +21,8 @@
       float: right;
       margin-top: 50px;
       margin-left: 10px;
-      padding: 5px; 
-      max-width: 100%; 
+      padding: 5px;
+      max-width: 100%;
       height: auto;
       /*Inline*/
     }
@@ -60,7 +59,6 @@
     h1 {
       display: inline;
     }
-
   </style>
 </head>
 
@@ -77,10 +75,11 @@
   </script>
 
   <body class="mycontent">
-    <div id="left-container">
+    <div `id="left-container">
       <button id="addButton">Add</button>
       <button id="viewButton">View</button>
       <button id="shareButton">Share</button>
+      <button id="friendsButton">Friends</button>
     </div>
     <div id="right-container">
       <img src="images/Graph.jpg" alt="Large Image">
@@ -103,36 +102,117 @@
         <input type="number" id="sets" name="sets" required><br><br>
         <label for="reps">Reps:</label>
         <input type="number" id="reps" name="reps" required><br><br>
-        <button id="saveActivity">Save</button>
+        <button id="saveLiftActivity">Save</button>
         <button id="closeModal">Close</button>
       </div>
     </div>
 
+    <!-- Modal for the friends sections -->
+    <div class="modal" id="friendsLiftModal">
+      <div class="modal-content">
+        <h2>Lift Timeline</h2>
+        <ul>
+          <li>
+            <span class="username">User 1</span>
+            <span class="lift">Bench Press</span>
+            <span class="weight">200 lbs</span>
+            <span class="sets">3 sets</span>
+            <span class="reps">10 reps</span>
+          </li>
+          <li>
+            <span class="username">User 2</span>
+            <span class="lift">Squat</span>
+            <span class="weight">300 lbs</span>
+            <span class="sets">5 sets</span>
+            <span class="reps">5 reps</span>
+          </li>
+          <li>
+            <span class="username">User 3</span>
+            <span class="lift">Deadlift</span>
+            <span class="weight">400 lbs</span>
+            <span class="sets">1 set</span>
+            <span class="reps">3 reps</span>
+          </li>
+          <li>
+            <span class="username">User 4</span>
+            <span class="lift">Overhead Press</span>
+            <span class="weight">150 lbs</span>
+            <span class="sets">4 sets</span>
+            <span class="reps">8 reps</span>
+          </li>
+        </ul>
+        <button id="closeFriendsModal">Close</button>
+      </div>
+    </div>
+    <!-- HTML code for the lift data display -->
+    <h2 id="liftData">Click "View" to display data</h2>
+
+
+    <!-- SCRIPT section -->
     <script>
       // Get references to elements
-      const addButton = document.getElementById("addButton");
-      const viewButton = document.getElementById("viewButton");
       const addModal = document.getElementById("addModal");
       const closeModal = document.getElementById("closeModal");
+      const viewButton = document.getElementById("viewButton");
+      const shareButton = document.getElementById("shareButton");
+      const liftData = document.getElementById("liftData");
+      const friendsButton = document.getElementById("friendsButton");
+      const friendsLiftModal = document.getElementById("friendsLiftModal");
+      const closeFriendsModal = document.getElementById("closeFriendsModal");
 
       // Show the add modal when the "Add" button is clicked
       addButton.addEventListener("click", () => {
         addModal.style.display = "block";
       });
 
-      // Close the add modal when the "Close" button is clicked
+      // Close the add modal when the "Close" button is clicked`
       closeModal.addEventListener("click", () => {
         addModal.style.display = "none";
       });
 
-      // Show an alert when the "View" button is clicked
-      viewButton.addEventListener("click", () => {
-        alert("You clicked View");
+      // Add a lift to local storage when the "save" button is clicked
+      saveLiftActivity.addEventListener("click", () => {
+        const activity = document.getElementById("activity").value;
+        const weight = document.getElementById("weight").value;
+        const sets = document.getElementById("sets").value;
+        const reps = document.getElementById("reps").value;
+        const lift = {
+          activity: activity,
+          weight: weight,
+          sets: sets,
+          reps: reps
+        };
+        localStorage.setItem("lastAddedLift", JSON.stringify(lift));
+        addModal.style.display = "none"; //Hides modal when save is clicked
+
       });
+
+      // Show the last added lift when the "View Lift" button is clicked
+      viewButton.addEventListener("click", () => {
+        const lastAddedLift = JSON.parse(localStorage.getItem("lastAddedLift"));
+        liftData.innerHTML = `Last added lift: ${lastAddedLift.activity}, ${lastAddedLift.weight} lbs, ${lastAddedLift.sets} sets, ${lastAddedLift.reps} reps`;
+      });
+
       // Show an alert when the "Share" button is clicked
       shareButton.addEventListener("click", () => {
         alert("Share to friends");
       });
+      // Show a modal with lift data when the "Friends" button is clicked
+      viewButton.addEventListener("click", () => {
+        const lastAddedLift = JSON.parse(localStorage.getItem("lastAddedLift"));
+        liftData.innerHTML = `Last added lift: ${lastAddedLift.activity}, ${lastAddedLift.weight} lbs, ${lastAddedLift.sets} sets, ${lastAddedLift.reps} reps`;
+      });
+      
+      friendsButton.addEventListener("click", () => {
+        friendsLiftModal.style.display = "block";
+      });
+      const liftModal = document.getElementById("liftModal");
+      
+      closeFriendsModal.addEventListener("click", () => {
+        friendsLiftModal.style.display = "none";
+        console.log("close clicked for friends");
+      });
+
     </script>
 
   </body>

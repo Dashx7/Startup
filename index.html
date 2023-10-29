@@ -29,7 +29,7 @@
 
     input[type="text"],
     input[type="password"] {
-      width: 100%;
+      width: 90%;
       padding: 20px;
       /* Increase the padding */
       margin: 20px 0;
@@ -60,7 +60,7 @@
       cursor: not-allowed;
     }
 
-    h2{
+    h2 {
       color: var(--primary-color);
       font-size: 36px;
     }
@@ -82,10 +82,10 @@
   <!-- Other content for your webpage -->
   <html>
 
-  <title id="LoginTitle">Login/Register</title>
-
-
   <body>
+    <h1 style="text-align: center;">Welcome to Gym Bro Buddy! </h1>
+    <h3 style="max-width: 80%; margin: 0 auto; text-align: center;"> LOGIN or REGISTER to get started. I strive to provide the best user experience possible. So please take a look around and let me know if you have any questions.</h3>
+    <title id="LoginTitle">Login/Register</title>
     <div class="container">
       <h2>Login/Register</h2>
       <form id="loginForm">
@@ -96,7 +96,9 @@
       </form>
     </div>
 
-    <script> // Get references to the form elements, allows me to manipulate buttons
+    <script>
+      
+      // Get references to the form elements, allows me to manipulate buttons
       const emailInput = document.getElementById("email");
       const passwordInput = document.getElementById("password");
       const loginButton = document.getElementById("loginButton");
@@ -116,16 +118,21 @@
 
       // Add event listeners for login and register actions
       loginButton.addEventListener("click", function (e) {
+        localStorage.setItem("email", emailInput.value);
+        localStorage.setItem("password", passwordInput.value);
         e.preventDefault();
-        // Add your login logic here
-        alert("Login successful!");
+        const userName = localStorage.getItem("email");
+        alert("Login for: " + userName + " sucessful!");
         window.location.href = "https://startup.joshwiseman.click/track-stats.html";
       });
 
       registerButton.addEventListener("click", function (e) {
         e.preventDefault();
+        localStorage.setItem("email", emailInput.value);
+        localStorage.setItem("password", passwordInput.value);
         // Add your register logic here
-        alert("Thanks for Registering!");
+        const userName = localStorage.getItem("email");
+        alert("Thanks for Registering, " + userName + "!");
         window.location.href = "https://startup.joshwiseman.click/track-stats.html";
       });
     </script>
