@@ -41,6 +41,7 @@ Workout Buddy web development idea? Gym bro buddy, bench bro buddy Buddy
 1. In the following code, what does the link element do?
 
 The <link> element is used to link external resources, typically stylesheets, to an HTML document. It helps in applying styles and layouts to the document.
+
 2. In the following code, what does a div tag do?
 
 The <div> tag is a block-level element used for grouping and structuring content within an HTML document. It is often styled with CSS to create layout structures.
