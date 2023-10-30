@@ -58,6 +58,18 @@ In the CSS box model, what is the ordering of the box layers starting at the ins
 The order is content, padding, border, margin from inside to outside.
 Given the following HTML, what CSS would you use to set the text "troubl" to green and leave the "double" text unaffected?
 
+<p>
+  <span class="green-text">troubl</span>
+  double
+</p>
+CSS:
+
+css
+Copy code
+.green-text {
+  color: green;
+}
+
 Use CSS like this: p::first-line { color: green; }.
 What will the following code output when executed using a for loop and console.log?
 
