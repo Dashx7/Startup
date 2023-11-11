@@ -41,17 +41,21 @@ Workout Buddy web development idea? Gym bro buddy, bench bro buddy Buddy
 1. In the following code, what does the link element do?
 
 The <link> element is used to link external resources, typically stylesheets, to an HTML document. It helps in applying styles and layouts to the document.
+
 2. In the following code, what does a div tag do?
 
 The <div> tag is a block-level element used for grouping and structuring content within an HTML document. It is often styled with CSS to create layout structures.
+
 3. In the following code, what is the difference between the #title and .grid selector?
 
 #title is an ID selector and refers to a specific HTML element with the id attribute of "title." It selects one unique element.
 .grid is a class selector and refers to one or more HTML elements with the class attribute of "grid." It can select multiple elements.
+
 4. In the following code, what is the difference between padding and margin?
 
 Padding is the space inside an element, between its content and the element's border. It affects the element's size and content layout.
 Margin is the space outside an element, around its border, and affects the spacing between elements.
+
 5. Given this HTML and this CSS how will the images be displayed using flex?
 
 Let's say you have HTML like this:
@@ -70,6 +74,7 @@ Copy code
   justify-content: space-between;
 }
 In this example, the images will be displayed in a row with equal spacing between them, due to the use of display: flex and justify-content: space-between.
+
 6. What does the following padding CSS do?
 
 Consider this CSS:
@@ -78,6 +83,7 @@ Copy code
 .box {
   padding: 20px;
 This CSS applies 20 pixels of padding on all sides (top, right, bottom, and left) of the element with the class "box." It creates space between the element's content and its border.
+
 7. What does the following code using arrow syntax function declaration do?
 
 Imagine the following JavaScript code:
@@ -85,6 +91,7 @@ javascript
 Copy code
 const add = (a, b) => a + b;
 This code defines a function named add using arrow function syntax. It takes two parameters (a and b) and returns their sum. It's a concise way of defining functions.
+
 8. What does the following code using map with an array output?
 
 Let's say you have this JavaScript code:
@@ -93,6 +100,7 @@ Copy code
 const numbers = [1, 2, 3, 4, 5];
 const doubled = numbers.map(number => number * 2);
 This code uses the map function to double each element in the numbers array. The doubled array will contain [2, 4, 6, 8, 10].
+
 9. What does the following code output using getElementById and addEventListener?
 
 Consider the HTML:
@@ -107,6 +115,7 @@ button.addEventListener("click", () => {
   alert("Button clicked!");
 });
 This code adds a click event listener to the button with the ID "myButton." When the button is clicked, it triggers an alert that says "Button clicked!"
+
 10. What does the following line of JavaScript do using a # selector?
 - Imagine this line of JavaScript:
 javascript const heading = document.querySelector("#mainHeading"); This code selects the HTML element with the ID "mainHeading." It retrieves the element, allowing you to manipulate or access its properties in your JavaScript code.
