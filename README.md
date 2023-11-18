@@ -24,7 +24,7 @@
 ### Service
 - Updated everything to be in the public folder
 - The main "host" is now the index.js which allows for everything else
-- Now using Express
+- Now using Express and Node.js. (Node.js didn't work on school computer so the development enviroment is now on my home computer)
 -  Added in two endpoints that allow you to post to workouts (which is implementsed in trackstats.js) and get the workouts. 
 ### Html, Css
 - You can look at the webpage to see what it does
