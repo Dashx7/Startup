@@ -14,6 +14,7 @@ app.use(express.json());
 
 // Serve up the front-end static content hosting
 app.use(express.static('public'));
+//Is this broken?
 
 // Router for service endpoints
 var apiRouter = express.Router();
@@ -67,8 +68,3 @@ function updateWorkouts(newWorkout, workouts) {
     console.log("From the API call",workouts);
     return workouts;
 }
-
-//MAKE plans section
-const makePlans = require('./make-plans');
-// Now you can call the function exported from make-plans.js
-makePlans();

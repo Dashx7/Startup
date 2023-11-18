@@ -1,26 +1,58 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Make Plans</title>
+  <meta charset="UTF-8">
+  <title>Make Plans</title>
 </head>
+
 <body>
   <!-- This is the standarized template-->
   <div id="header-container"></div>
   <script>
     // Use JavaScript to load and insert the template into the page
     fetch('template.html')
-        .then(response => response.text())
-        .then(template => {
-            document.getElementById('header-container').innerHTML = template;
-        });
+      .then(response => response.text())
+      .then(template => {
+        document.getElementById('header-container').innerHTML = template;
+      });
   </script>
-  
+
   <h1>
     Want to find out some exercises for the muscle group you want to train? Look no further!
   </h1>
+  <h2>
+    Ignore the json stuff, I'll fix it later
+  </h2>
 
-  <select id="muscle-group" style="color: var(--root-color);">
+  <br>
+  <style>
+    #muscle-group {
+      font-size: 20px;
+      /* Adjust as needed */
+      padding: 10px;
+      /* Adjust as needed */
+      height: 50px;
+      /* Adjust as needed */
+      color: var(--background-color);
+      margin: 20px;
+      /* Adjust as needed */
+    }
+
+    #make-plans-button {
+      font-size: 20px;
+      /* Adjust as needed */
+      padding: 10px;
+      /* Adjust as needed */
+      height: 50px;
+      /* Adjust as needed */
+      color: var(--background-color);
+      margin: 20px;
+      /* Adjust as needed */
+    }
+  </style>
+
+  <select id="muscle-group" style="color: var(--background-color);">
     <option value="abdominals">Abdominals</option>
     <option value="abductors">Abductors</option>
     <option value="adductors">Adductors</option>
@@ -38,10 +70,15 @@
     <option value="traps">Traps</option>
     <option value="triceps">Triceps</option>
   </select>
-  
-  <script src="make-plans.js"></script>  <!--This is where the script is called -->
-  
-  <button id="make-plans-button">Make Plans</button>
-  
+  <button id="make-plans-button">Find Exercises</button>
+
+  <br>
+  <!-- Add this to your HTML where you want to display the results -->
+  <div id="results"></div>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
+  <script src="make-plans.js"></script> <!--This is where the script is called -->
+
+
 </body>
+
 </html>
