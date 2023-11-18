@@ -2,12 +2,7 @@
 //Make the view display the data from the API, last lift and top 10 lifts
 //Make a clear button that clears the data from the API in settings, perhaps with a warning confirmation
 
-//Am I making my routes in express?
-
-//What are the endpoints for this
-
-//Include the third party 
-
+// EXPRESS server section
 const express = require('express');
 const app = express();
 
@@ -24,6 +19,7 @@ app.use(express.static('public'));
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
+//API endpoints section
 // GetScores
 apiRouter.get('/workouts', (_req, res) => {
     res.send(workouts);
@@ -39,15 +35,14 @@ apiRouter.post('/workout', (req, res) => {
 app.use((_req, res) => {
     res.sendFile('index.html', { root: 'public' });
 });
-
+// Start the service
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
-
 app.listen(8080);
 
-// updateScores considers a new score for inclusion in the high scores.
-// The high scores are saved in memory and disappear whenever the service is restarted.
+//API functions section
+// updateScores considers a new score for inclusion in the high scores. The high scores are saved in memory and disappear whenever the service is restarted.
 let workouts = [];
 function updateWorkouts(newWorkout, workouts) {
     console.log("From the API call",newWorkout);
@@ -72,3 +67,8 @@ function updateWorkouts(newWorkout, workouts) {
     console.log("From the API call",workouts);
     return workouts;
 }
+
+//MAKE plans section
+const makePlans = require('./make-plans');
+// Now you can call the function exported from make-plans.js
+makePlans();
