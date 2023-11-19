@@ -1,0 +1,37 @@
+#formPage {
+    font-size: 20px;
+    /* Increase the font size */
+    float: up;
+    padding: 5px;
+    padding-left: 25px;
+}
+
+#rat-image {
+    position: absolute;
+    opacity: "1";
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    /* Make sure the image is on top of everything else */
+    animation: moveImage 1s linear;
+    /* Call the moveImage animation */
+}
+
+@keyframes moveImage {
+    0% {
+        transform: scale(1);
+    }
+
+    90% {
+        transform: scale(5);
+    }
+
+    100% {
+        transform: scale(5);
+    }
+}
+
+/* #rat-image:hover {
+    transform: translate(-50%, -50%) rotate(360deg);
+  } */
