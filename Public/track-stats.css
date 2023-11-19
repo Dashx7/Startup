@@ -7,6 +7,10 @@
     display: inline-block;
     width: auto; 
 }
+#left-container button {
+    width: 100%;
+    white-space: nowrap; /* This will prevent the button text from wrapping to the next line */
+}
 
 #right-container {
     flex: 5;

@@ -17,8 +17,7 @@ body {
 
 /* And so on for the other colors */
 
-p,
-a {
+p, a {
     display: inline-block;
     vertical-align: middle;
 }
