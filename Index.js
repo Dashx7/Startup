@@ -46,7 +46,7 @@ app.listen(8080);
 // updateScores considers a new score for inclusion in the high scores. The high scores are saved in memory and disappear whenever the service is restarted.
 let workouts = [];
 function updateWorkouts(newWorkout, workouts) {
-    console.log("From the API call",newWorkout);
+    console.log("From the API call", newWorkout);
     workouts.push(newWorkout);
     // let found = false;
     // for (const [i, prevWorkout] of workouts.entries()) {
@@ -65,42 +65,113 @@ function updateWorkouts(newWorkout, workouts) {
         workouts.length = 10;
     }
 
-    console.log("From the API call",workouts);
+    console.log("From the API call", workouts);
     return workouts;
 }
 
 //MONGODB section
+// const { MongoClient } = require('mongodb');
+
+// //TODO change this to the actual database
+// const userName = 'holowaychuk';
+// const password = 'express';
+// const hostname = 'mongodb.com';
+
+// const url = `mongodb+srv://${userName}:${password}@${hostname}`;
+
+// const client = new MongoClient(url);
+
+// // await client.connect(); // Connect to the MongoDB cluster
+
+// const collection = client.db('rental').collection('house');
+
+// const house = {
+//   name: 'Beachfront views',
+//   summary: 'From your bedroom to the beach, no shoes required',
+//   property_type: 'Condo',
+//   beds: 1,
+// };
+// await collection.insertOne(house);
+
+
+// const query = { property_type: 'Condo', beds: { $lt: 2 } };
+
+// const options = {
+//   sort: { price: -1 },
+//   limit: 10,
+// };
+
+// const cursor = collection.find(query, options);
+// const rentals = await cursor.toArray();
+// rentals.forEach((i) => console.log(i));
+
+
+//MongoDB Test
 const { MongoClient } = require('mongodb');
+const config = require('./public/dbconfig.json') //Updated to the public folder
 
-//TODO change this to the actual database
-const userName = 'holowaychuk';
-const password = 'express';
-const hostname = 'mongodb.com';
+async function main() {
+    // Connect to the database cluster
+    //   const url = "mongodb+srv://JoshWiseman:Mj20032003@joshwisemancluster.yfd6qrz.mongodb.net/?retryWrites=true&w=majority";
+    const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
 
-const url = `mongodb+srv://${userName}:${password}@${hostname}`;
+    const client = new MongoClient(url);
+    const db = client.db('rental');
+    const collection = db.collection('house');
 
-const client = new MongoClient(url);
+    // Test that you can connect to the database
+    (async function testConnection() {
+        await client.connect();
+        await db.command({ ping: 1 });
+    })().catch((ex) => {
+        console.log(`Unable to connect to database with ${url} because ${ex.message}`);
+        process.exit(1);
+    });
 
-// await client.connect(); // Connect to the MongoDB cluster
+    // Insert a document
+    const house = {
+        name: 'Beachfront views',
+        summary: 'From your bedroom to the beach, no shoes required',
+        property_type: 'Condo',
+        beds: 1,
+    };
+    await collection.insertOne(house);
 
-const collection = client.db('rental').collection('house');
+    // Query the documents
+    const query = { property_type: 'Condo', beds: { $lt: 2 } };
+    const options = {
+        sort: { score: -1 },
+        limit: 10,
+    };
 
-const house = {
-  name: 'Beachfront views',
-  summary: 'From your bedroom to the beach, no shoes required',
-  property_type: 'Condo',
-  beds: 1,
-};
-await collection.insertOne(house);
+    const cursor = collection.find(query, options);
+    const rentals = await cursor.toArray();
+    rentals.forEach((i) => console.log(i));
+}
 
+main().catch(console.error);
 
-const query = { property_type: 'Condo', beds: { $lt: 2 } };
-
-const options = {
-  sort: { price: -1 },
-  limit: 10,
-};
-
-const cursor = collection.find(query, options);
-const rentals = await cursor.toArray();
-rentals.forEach((i) => console.log(i));
+//MongoDB Test 2, from their website
+// const { MongoClient, ServerApiVersion } = require('mongodb');
+// const uri = "mongodb://atlas-sql-654932bced4bab67ba4c9f27-wck9s.a.query.mongodb.net/Gym_Bro_Buddy?ssl=true&authSource=admin"
+// // Create a MongoClient with a MongoClientOptions object to set the Stable API version
+// const client = new MongoClient(uri, {
+//   serverApi: {
+//     version: ServerApiVersion.v1,
+//     strict: true,
+//     deprecationErrors: true,
+//   }
+// });
+// async function run() {
+//   try {
+//     // Connect the client to the server	(optional starting in v4.7)
+//     await client.connect();
+//     // Send a ping to confirm a successful connection
+//     await client.db("admin").command({ ping: 1 });
+//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
+//   } finally {
+//     // Ensures that the client will close when you finish/error
+//     await client.close();
+//   }
+// }
+// run().catch(console.dir);
