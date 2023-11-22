@@ -84,7 +84,7 @@ viewButton.addEventListener("click", async () => {
     localStorage.setItem('workouts', JSON.stringify(workouts));
 
     //Add the last 10 lifts to the view
-    liftData.innerHTML += "Last 10 lifts:<br>";
+    liftData.innerHTML = "Last 10 lifts:<br>";
     for (let i = 0; i < 10; i++) {
         liftData.innerHTML += `Lift ${i + 1}: ${workouts[i].activity}, ${workouts[i].weight} lbs, ${workouts[i].sets} sets, ${workouts[i].reps} reps<br>`;
     }
