@@ -28,6 +28,7 @@ const liftData = document.getElementById("liftData");
 const friendsButton = document.getElementById("friendsButton");
 const friendsLiftModal = document.getElementById("friendsLiftModal");
 const closeFriendsModal = document.getElementById("closeFriendsModal");
+const liftModal = document.getElementById("liftModal");
 
 // Show the add modal when the "Add" button is clicked
 addButton.addEventListener("click", () => {
@@ -46,15 +47,17 @@ saveLiftActivity.addEventListener("click", async () => {
     const weight = document.getElementById("weight").value;
     const sets = document.getElementById("sets").value;
     const reps = document.getElementById("reps").value;
+    const date = new Date().toISOString(); //Adding the date to the lift as well, TODO MAKE SURE THIS WORKS
     const lift = {
         activity: activity,
         weight: weight,
         sets: sets,
-        reps: reps
+        reps: reps,
+        date: date
     };
 
     try {
-        console.log("Atempting lift", lift);
+        console.log("Atempting to add lift", lift);
         // Perform asynchronous operations here, such as making a fetch request
         const response = await fetch('/api/workout', {
             method: 'POST',
@@ -79,11 +82,7 @@ viewButton.addEventListener("click", async () => {
     workouts = await response.json();
     // Save the scores in case we go offline in the future
     localStorage.setItem('workouts', JSON.stringify(workouts));
-    const lastAddedLift = JSON.parse(localStorage.getItem("lastAddedLift"));
-    liftData.innerHTML = "";
-    if (!lastAddedLift) {
-        liftData.innerHTML = `Last added lift: ${lastAddedLift.activity}, ${lastAddedLift.weight} lbs, ${lastAddedLift.sets} sets, ${lastAddedLift.reps} reps<br>`;
-    }
+
     //Add the last 10 lifts to the view
     liftData.innerHTML += "Last 10 lifts:<br>";
     for (let i = 0; i < 10; i++) {
@@ -102,7 +101,6 @@ shareButton.addEventListener("click", () => {
 friendsButton.addEventListener("click", () => {
     friendsLiftModal.style.display = "block";
 });
-const liftModal = document.getElementById("liftModal");
 
 closeFriendsModal.addEventListener("click", () => {
     friendsLiftModal.style.display = "none";

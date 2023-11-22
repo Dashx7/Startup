@@ -22,14 +22,27 @@ app.use(`/api`, apiRouter);
 
 //API endpoints section
 // GetScores
-apiRouter.get('/workouts', (_req, res) => {
-    res.send(workouts);
+apiRouter.get('/workouts', async (req, res) => {
+    try {
+        const workouts = await getLastTenWorkouts();
+        res.send(workouts);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: 'An error occurred while getting the workouts' });
+    }
 });
 
 // SubmitScore
-apiRouter.post('/workout', (req, res) => {
-    workouts = updateWorkouts(req.body, workouts);
-    res.send(workouts);
+apiRouter.post('/workout', async (req, res) => {
+    try {
+        await postWorkout(req.body);
+        res.send({ message: 'Workout posted successfully' });
+        console.log("Workout posted successfully", req.body);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: 'An error occurred while posting the workout' });
+        console.log("Workout posted failed", req.body);
+    }
 });
 
 // Return the application's default page if the path is unknown
@@ -48,19 +61,6 @@ let workouts = [];
 function updateWorkouts(newWorkout, workouts) {
     console.log("From the API call", newWorkout);
     workouts.push(newWorkout);
-    // let found = false;
-    // for (const [i, prevWorkout] of workouts.entries()) {
-    //     if (newWorkout.weight > prevWorkout.weight) {
-    //         workouts.splice(i, 0, newWorkout);
-    //         found = true;
-    //         break;
-    //     }
-    // }
-
-    // if (!found) {
-    //     workouts.push(newWorkout);
-    // }
-
     if (workouts.length > 10) {
         workouts.length = 10;
     }
@@ -73,42 +73,32 @@ function updateWorkouts(newWorkout, workouts) {
 const { MongoClient } = require('mongodb');
 const config = require('./public/dbconfig.json') //Updated to the public folder
 
-async function main() {
-    // Connect to the database cluster
-    const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
+const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
 
-    const client = new MongoClient(url);
-    const db = client.db('rental');
-    const collection = db.collection('house');
+const client = new MongoClient(url);
+const db = client.db('rental');
+const workoutCollection = db.collection('workouts'); // Collection is the same as a table in SQL, this one is a collection of workouts
+const usersCollection = db.collection('users'); // Collection is the same as a table in SQL, this one is a collection of users
 
-    // Test that you can connect to the database
-    (async function testConnection() {
-        await client.connect();
-        await db.command({ ping: 1 });
-    })().catch((ex) => {
-        console.log(`Unable to connect to database with ${url} because ${ex.message}`);
-        process.exit(1);
-    });
+// Test that you can connect to the database
+(async function testConnection() {
+    await client.connect();
+    await db.command({ ping: 1 });
+    console.log('Connected successfully to database server');
+})().catch((ex) => {
+    console.log(`Unable to connect to database with ${url} because ${ex.message}`);
+    process.exit(1);
+});
 
-    // Insert a document
-    const house = {
-        name: 'Beachfront views',
-        summary: 'From your bedroom to the beach, no shoes required',
-        property_type: 'Condo',
-        beds: 1,
-    };
-    await collection.insertOne(house);
-
-    // Query the documents
-    const query = { property_type: 'Condo', beds: { $lt: 2 } };
-    const options = {
-        sort: { score: -1 },
-        limit: 10,
-    };
-
-    const cursor = collection.find(query, options);
-    const rentals = await cursor.toArray();
-    rentals.forEach((i) => console.log(i));
+// Function to post a workout
+async function postWorkout(workout) {
+    const result = await workoutCollection.insertOne(workout);
+    console.log(`Workout inserted with the following id: ${result.insertedId}`);
 }
 
-main().catch(console.error);
+// Function to get the last 10 workouts
+async function getLastTenWorkouts() {
+    const workouts = await workoutCollection.find().sort({ date: -1 }).limit(10).toArray();
+    console.log(workouts);
+    return workouts;
+}
