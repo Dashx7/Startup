@@ -59,7 +59,7 @@ function getUser(email) {
 }
 
 function getUserByToken(token) {
-  return userCollection.findOne({ token: token });
+  return usersCollection.findOne({ token: token });
 }
 
 async function createUser(email, password) {
@@ -71,7 +71,7 @@ async function createUser(email, password) {
     password: passwordHash,
     token: uuid.v4(),
   };
-  await userCollection.insertOne(user);
+  await usersCollection.insertOne(user);
 
   return user;
 }

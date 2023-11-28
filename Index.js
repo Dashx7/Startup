@@ -29,7 +29,7 @@ app.use(`/api`, apiRouter);
 
 
 //API ENDPOINTS section
-// GetScores
+//Get workouts
 apiRouter.get('/workouts', async (req, res) => {
     try {
         const workouts = await DB.getLastTenWorkouts();
@@ -40,8 +40,7 @@ apiRouter.get('/workouts', async (req, res) => {
     }
 });
 
-// SubmitScore
-
+//Submit Workout
 apiRouter.post('/workout', async (req, res) => {
     try {
         await DB.postWorkout(req.body);
@@ -53,38 +52,10 @@ apiRouter.post('/workout', async (req, res) => {
         console.log("Workout posted failed", req.body);
     }
 });
-
-// Return the application's default page if the path is unknown
-app.use((_req, res) => {
-    res.sendFile('index.html', { root: 'public' });
-});
-// Start the service
-app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
-}); app.listen(8080);
-
-
-
-//AUTHENTICATION section
-
-// createAuthorization from the given credentials
-//API ROUTER OR APP?
-// apiRouter.post('/auth/create', async (req, res) => {
-//     if (await getUser(req.body.userName)) {
-//         res.status(409).send({ msg: 'Existing user' }); //409 is a conflict error
-//     }
-//     else {
-//         const user = await createUser(req.body.userName, req.body.password); //Creates a new user
-//         setAuthCookie(res, user.token); //And set their cookie to the users token
-//         res.send({
-//             userName: user.userName,
-//             token: user.token,
-//         });
-//     }
-// });
-// CreateAuth token for a new user
+//AUTHENTICATION section for apiRouter
 apiRouter.post('/auth/register', async (req, res) => {
-    if (await usersCollection.findOne(req.body.email)) {
+    console.log("Register attempt", req.body);
+    if (await DB.getUser(req.body.email)) {
       res.status(409).send({ msg: 'Existing user' });
     } else {
       const user = await DB.createUser(req.body.email, req.body.password);
@@ -101,7 +72,8 @@ apiRouter.post('/auth/register', async (req, res) => {
 // loginAuthorization from the given credentials
 apiRouter.post('/auth/login', async (req, res) => {
     console.log("Login attempt", req.body);
-    const user = await getUser(req.body.userName);
+    const user = await DB.getUser(req.body.email);
+    console.log("User", user);
     if (user) {
         if (await bcrypt.compare(req.body.password, user.password)) {
             setAuthCookie(res, user.token);
@@ -123,21 +95,6 @@ apiRouter.get('/user/me', async (req, res) => {
     res.status(401).send({ msg: 'Unauthorized' });
 });
 
-function getUser(userName) { //Checks if the user exists
-    return usersCollection.findOne({ userName: userName });
-}
-
-async function createUser(userName, password) { //Creates a new user, what did you expect?
-    const passwordHash = await bcrypt.hash(password, 10); //Hashes the password with bcrypt and 10 salt rounds
-    const user = {
-        userName: userName,
-        password: passwordHash,
-        token: uuid.v4(), //Generates a random token
-    };
-    await usersCollection.insertOne(user); //Inserts the user into the database
-    return user;
-}
-
 function setAuthCookie(res, authToken) { //Idk what this does
     res.cookie('token', authToken, {
         secure: true,
@@ -145,3 +102,15 @@ function setAuthCookie(res, authToken) { //Idk what this does
         sameSite: 'strict',
     });
 }
+
+// Return the application's default page if the path is unknown
+app.use((_req, res) => {
+    res.sendFile('index.html', { root: 'public' });
+});
+// Start the service
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+}); app.listen(8080);
+
+
+
