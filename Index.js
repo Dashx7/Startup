@@ -2,7 +2,7 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
 const express = require('express');
 const app = express();
-const DB = require('./public/database.js'); // And test that you can connect to the database
+const DB = require('./database.js'); // And test that you can connect to the database
 
 
 const authCookieName = 'token';
