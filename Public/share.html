@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Share</title>
+    <link rel="stylesheet" href="share.css">
+    <!-- This is the standarized template-->
+    <div id="header-container"></div>
+    <script>
+        // Use JavaScript to load and insert the template into the page
+        fetch('template.html')
+            .then(response => response.text())
+            .then(template => {
+                document.getElementById('header-container').innerHTML += template;
+            });
+    </script>
+</head>
+
+<body>
+    <div id="mycontent">
+        <h1>Welcome to the ChatRoom</h1>
+        <h2>Enter your friends username and a message to send to a note</h2>
+        
+        <div id="chat-window">
+            <p>Your username: <span id="sender">CHANGE THIS EVENTUALLY</span></p> <!-- Replace 'YourUsername' with the actual username -->
+            <input type="text" id="username" placeholder="Enter Recipient's Username ">
+            <textarea id="message" placeholder="Enter your message"></textarea>
+            <button id="send">Send</button>
+            <div id="messages">
+                <p>To John: Hello, this is a test message.</p>
+                <p>From John: Hi John, I received your message.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- The Scripting is stored in here -->
+    <script src="share.js"></script> <!--This is where the script is called -->
+
+</body>
+
+</html>

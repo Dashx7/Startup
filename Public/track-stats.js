@@ -93,7 +93,7 @@ viewButton.addEventListener("click", async () => {
 
 // Show an alert when the "Share" button is clicked
 shareButton.addEventListener("click", () => {
-    alert("Share to friends");
+    window.location.href = "share.html";
     //TODO Add something here
 });
 

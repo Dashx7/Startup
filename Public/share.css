@@ -1,0 +1,38 @@
+#mycontent {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#chat-window {
+    width: 500px;
+    height: 600px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#messages {
+    height: 365px; /* This value is unfortunetly hardcoded */
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+#messages p {
+    display: block;
+}
+
+#username, #message {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#message {
+    height: 100px;
+}
