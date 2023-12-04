@@ -3,6 +3,10 @@ const bcrypt = require('bcrypt');
 const express = require('express');
 const app = express();
 const DB = require('./database.js'); // And test that you can connect to the database
+const WSS = require('./websocket.js');
+
+//Define the path to the public directory for debugging?
+// app.use(express.static(path.join(__dirname, 'public')));
 
 
 const authCookieName = 'token';
@@ -101,6 +105,7 @@ function setAuthCookie(res, authToken) { //Idk what this does
         httpOnly: true,
         sameSite: 'strict',
     });
+    // document.cookie = "token = authToken";
 }
 
 // Return the application's default page if the path is unknown

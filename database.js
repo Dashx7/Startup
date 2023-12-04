@@ -18,7 +18,7 @@ const usersCollection = db.collection('users'); // Collection is the same as a t
 (async function testConnection() {
   await client.connect();
   await db.command({ ping: 1 });
-  console.log("Connected successfully to server");
+  console.log("Connected successfully to database server");
 })().catch((ex) => {
   console.log(`Unable to connect to database with ${url} because ${ex.message}`);
   process.exit(1);
