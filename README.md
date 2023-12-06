@@ -14,7 +14,7 @@
 ### WebSocket data: 
 - This will be pulling the most recent data and being able to share stats with friends. Everyone wants to show off to friends, or if you just want to see where your at so you would be able to pull up live time feed and see how its going for them
 - ![Image of my sketch](https://github.com/Dashx7/Startup/blob/main/IMG_7540.JPG)
-- So far I've implemented the "share" tab in the track-stats suedo homepage, that just allows you to send a message through websockets to anyone that is on. Hopefully in the future I will have it fixed 
+- So far I've implemented the "share" tab in the track-stats suedo homepage, that just allows you to send a message through websockets to anyone that is on by typing in the message and the recipient (unused). Hopefully in the future I will have it fixed so it only sends to certain people, and being able to pull your own stats and send that, but it can send and recieve data right now and thats all I need. 
 
 ##UpdateLog
 ### Javascript
