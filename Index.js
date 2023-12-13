@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const express = require('express');
 const app = express();
 const DB = require('./database.js'); // And test that you can connect to the database
-const WSS = require('./websocket.js');
+const {WSS} = require('./websocket.js'); //Curly braces because it's a named export
 
 //Define the path to the public directory for debugging?
 // app.use(express.static(path.join(__dirname, 'public')));
@@ -12,7 +12,7 @@ const WSS = require('./websocket.js');
 const authCookieName = 'token';
 
 // The service port may be set on the command line
-const port = process.argv.length > 2 ? process.argv[2] : 3000;
+const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 // JSON body parsing using built-in middleware
 app.use(express.json());
@@ -113,9 +113,12 @@ app.use((_req, res) => {
     res.sendFile('index.html', { root: 'public' });
 });
 // Start the service
-app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
-}); app.listen(8080);
+// app.listen(port, () => {
+//     console.log(`Listening on port ${port}`);
+// }); app.listen(8080);
+const httpService = app.listen(port, () => { 
+      console.log(`Listening on port ${port}`);
+ }); WSS(httpService);
 
 
 

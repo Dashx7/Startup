@@ -1,6 +1,11 @@
 // Connect to the WebSocket server
 console.log("Attempting to connect to WebSocket server");
-var ws = new WebSocket('ws://localhost:9900');
+const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+console.log("Protocol is", protocol);
+var ws = new WebSocket(`${protocol}://${window.location.host}/ws`)
+console.log("Connected to WebSocket server");
+// var ws = new WebSocket('ws://localhost:9900');
+
 
 // Send a message when the connection is opened
 // ws.onopen = function() {
@@ -9,6 +14,9 @@ var ws = new WebSocket('ws://localhost:9900');
 // };
 
 // Log any received messages
+ws.onopen = function () {
+    console.log('Connected to WebSocket server');
+};
 ws.onmessage = function (event) {
     var msg = JSON.parse(event.data);
     console.log('Received:', msg);
