@@ -1,0 +1,23 @@
+{
+  "name": "startup",
+  "version": "1.0.0",
+  "description": "- Have you ever wanted to remember what your best bench was? Do you want to physically see the progress that you make in the gym? Want to brag to your friends about those massive winter gains or the summer cut? With the absolute dullest blade technology I could find I present to you the Gym Bro Buddy<sup>©</sup> it will keep track of your stats, make you training plans, calculate your ORM and almost nothing else! What a steal!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.2",
+    "mongodb": "^6.3.0",
+    "uuid": "^9.0.1",
+    "ws": "^8.15.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.4"
+  }
+}
