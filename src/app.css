@@ -1,11 +1,77 @@
-.body {
+:root {
+  --text-color: #f9fbee;
+  --background-color: #070802;
+  --primary-color: #170869;
+  --secondary-color: #1f092a;
+  --accent-color: #2e64d1;
+}
+
+/* Define the stylized colors as variables */
+
+body {
+  color: var(--text-color);
+  background-image: url('./images/Backgrounds/Hex.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+/* And so on for the other colors */
+
+p, a {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#calculate-btn {
+  font-size: 16px;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#calculate-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  /* background-color: #fff; */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* .body {
   display: flex;
   flex-direction: column;
   min-width: 375px;
   height: 100vh;
-}
+} */
 
-header {
+/* header {
   flex: 0 80px;
 }
 
@@ -15,38 +81,20 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-}
-
+} */
+/* 
 footer {
   flex: 0 30px;
-}
+} */
 
 menu {
   flex: 1;
   display: flex;
-  /*  overwrite Bootstrap so the menu does not wrap */
   flex-direction: row !important;
   list-style: none;
 }
 
-.navbar-brand {
-  padding-left: 0.3em;
-  border-bottom: solid rgb(182, 182, 182) thin;
-}
 
 menu .nav-item {
   padding: 0 0.3em;
-}
-
-footer a {
-  float: right;
-}
-
-@media (max-height: 600px) {
-  header {
-    display: none;
-  }
-  footer {
-    display: none;
-  }
 }

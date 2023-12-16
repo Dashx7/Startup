@@ -58,6 +58,7 @@ apiRouter.post('/workout', async (req, res) => {
 apiRouter.post('/auth/register', async (req, res) => {
     console.log("Register attempt", req.body);
     if (await DB.getUser(req.body.email)) {
+        console.log("Existing user");
       res.status(409).send({ msg: 'Existing user' });
     } else {
       const user = await DB.createUser(req.body.email, req.body.password);
@@ -78,11 +79,13 @@ apiRouter.post('/auth/login', async (req, res) => {
     console.log("User", user);
     if (user) {
         if (await bcrypt.compare(req.body.password, user.password)) {
+            console.log("Login successful");
             setAuthCookie(res, user.token);
             res.send({ id: user._id });
             return;
         }
     }
+    console.log("Login failed");
     res.status(401).send({ msg: 'Unauthorized' });
 });
 
