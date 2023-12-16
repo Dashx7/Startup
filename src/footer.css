@@ -4,7 +4,7 @@
 }
 
 .stickyfooter {
-    background-color: rgba(33, 33, 33, .9);
+    background-color: rgba(33, 33, 33, .7);
     color: #fff;
     text-align: center;
     position: fixed;
@@ -14,11 +14,7 @@
     /* height: 8%;  */
 } 
 #stickyfooterText, #stickyfooterLink {
-    /* padding: 10px 0; */
-    /* Add some padding for spacing */
     font-family: Arial, sans-serif;
-    font-size: 60%;
+    font-size: 80%;
     font-weight: bold;
-    /* margin-top: 0px; */
-    /* So the header doesn't overlap the content */
 }
