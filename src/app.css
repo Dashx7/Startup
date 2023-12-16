@@ -1,0 +1,44 @@
+.nav-container {
+    display: flex;
+    /* Use flexbox for equally spaced items */
+    justify-content: space-between;
+    /* Space items evenly */
+    padding: 0 20px;
+    /* Add padding to the sides of the navigation bar */
+}
+
+.nav-item {
+    background-color: #555;
+    /* Background color for each boxed heading */
+    padding: 10px 20px;
+    /* Add padding inside each boxed heading */
+    border-radius: 5px;
+    /* Rounded corners for boxed headings */
+}
+
+.nav-item a {
+    text-decoration: none;
+    /* Remove underlines from links */
+    color: #fff;
+    /* Text color for links */
+}
+
+#header-container {
+    background-color: rgba(33, 33, 33, .9);
+    /* Background color for the header */
+    color: #fff;
+    /* Text color for the header */
+    padding: 10px 0;
+    /* Add some padding for spacing */
+    font-family: Arial, sans-serif;
+    font-size: 140%;
+    font-weight: bold;
+    margin-top: 0px;
+    /* So the header doesn't overlap the content */
+}
+body {
+    background-image: url('./images/Backgrounds/Hex.jpg');
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: center center;
+  }
