@@ -9,6 +9,7 @@ import { Scores } from "./scores/scores";
 import { About } from "./about/about";
 import { Settings } from "./settings/settings";
 import { ORMCalculator } from "./orm_calculator/orm_calculator";
+import { MakePlans } from "./make_plans/make_plans";
 
 import Footer from "./footer";
 
@@ -29,7 +30,7 @@ export default function App() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="scores">
+              <NavLink className="nav-link" to="makeplans">
                 Make Plans
               </NavLink>
             </li>
@@ -49,6 +50,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<MyLogin />} />
           <Route path="/myLogin" element={<MyLogin />} />
+          <Route path="/makeplans" element={<MakePlans />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/play" element={<Play />} />
           <Route path="/ormcalculator" element={<ORMCalculator />} />
