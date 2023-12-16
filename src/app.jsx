@@ -8,6 +8,7 @@ import { Play } from "./play/play";
 import { Scores } from "./scores/scores";
 import { About } from "./about/about";
 import { Settings } from "./settings/settings";
+import { ORMCalculator } from "./orm_calculator/orm_calculator";
 
 import Footer from "./footer";
 
@@ -33,7 +34,7 @@ export default function App() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="about">
+              <NavLink className="nav-link" to="ormcalculator">
                 ORM Calulator
               </NavLink>
             </li>
@@ -50,6 +51,7 @@ export default function App() {
           <Route path="/myLogin" element={<MyLogin />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/play" element={<Play />} />
+          <Route path="/ormcalculator" element={<ORMCalculator />} />
           <Route path="/scores" element={<Scores />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
