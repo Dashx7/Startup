@@ -7,7 +7,7 @@ import { MyLogin } from "./myLogin/MyLogin";
 import { Play } from "./play/play";
 import { Scores } from "./scores/scores";
 import { About } from "./about/about";
-import { AuthState } from "./login/authState";
+import { Settings } from "./settings/settings";
 
 import Footer from "./footer";
 
@@ -38,7 +38,7 @@ export default function App() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="about">
+              <NavLink className="nav-link" to="settings">
                 Settings
               </NavLink>
             </li>
@@ -48,7 +48,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<MyLogin />} />
           <Route path="/myLogin" element={<MyLogin />} />
-          {/* <Route path="/" element={<Login />} exact /> */}
+          <Route path="/settings" element={<Settings />} />
           <Route path="/play" element={<Play />} />
           <Route path="/scores" element={<Scores />} />
           <Route path="/about" element={<About />} />
