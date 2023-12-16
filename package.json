@@ -27,9 +27,6 @@
   },
   "keywords": [],
   "author": "",
-<<<<<<< HEAD
-  "license": "ISC"
-=======
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -46,5 +43,4 @@
     "@types/node": "^20.9.4",
     "vite": "^2.0.0"
   }
->>>>>>> a4330c92abd799b6367591b02a3005be685f97f3
 }
