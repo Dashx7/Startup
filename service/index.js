@@ -25,6 +25,14 @@ app.set('trust proxy', true);
 
 // Router for service endpoints
 var apiRouter = express.Router();
+//Internet code
+// app.use(express.static('service', {
+//     setHeaders: (res, path) => {
+//       if (path.endsWith('.jsx')) {
+//         res.setHeader('Content-Type', 'application/javascript');
+//       }
+//     }
+//   }));
 app.use(`/api`, apiRouter);
 
 

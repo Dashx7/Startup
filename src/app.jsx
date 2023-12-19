@@ -4,12 +4,10 @@ import "./app.css";
 
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import { MyLogin } from "./myLogin/MyLogin";
-import { Play } from "./play/play";
-import { Scores } from "./scores/scores";
-import { About } from "./about/about";
 import { Settings } from "./settings/settings";
 import { ORMCalculator } from "./orm_calculator/orm_calculator";
 import { MakePlans } from "./make_plans/make_plans";
+import { TrackStats } from "./track_stats/track_stats";
 
 import Footer from "./footer";
 
@@ -25,7 +23,7 @@ export default function App() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="play">
+              <NavLink className="nav-link" to="trackstats">
                 Track Stats
               </NavLink>
             </li>
@@ -46,16 +44,13 @@ export default function App() {
             </li>
           </menu>
         </header>
-        {/* <main>App components go here</main> */}
         <Routes>
           <Route path="/" element={<MyLogin />} />
           <Route path="/myLogin" element={<MyLogin />} />
+          <Route path="/trackstats" element={<TrackStats />} />
           <Route path="/makeplans" element={<MakePlans />} />
           <Route path="/settings" element={<Settings />} />
-          <Route path="/play" element={<Play />} />
           <Route path="/ormcalculator" element={<ORMCalculator />} />
-          <Route path="/scores" element={<Scores />} />
-          <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
