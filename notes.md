@@ -1,5 +1,139 @@
 This is where my notes are going to be.
 
+//This is exam notes
+
+https://docs.google.com/document/d/1qeMtwXRH4o5shsTrFQsJAV8sgX4lI6cXNFvIrjQ1w8I/edit
+
+
+Cheat Sheet for Web Development Class
+1. Ports:
+
+HTTP: 80 (default), can be configured to other ports
+HTTPS: 443 (default), can be configured to other ports
+SSH: 22 (default), can be configured to other ports
+
+2. HTTP Status Codes:
+
+300s: Redirects (301 - Moved Permanently, 302 - Found)
+400s: Client Errors (404 - Not Found, 401 - Unauthorized)
+500s: Server Errors (500 - Internal Server Error, 502 - Bad Gateway)
+
+3. Content-Type Header:
+
+Specifies the type of data being sent in the response, allowing browsers to properly render it (e.g., text/html, image/jpeg).
+
+4. Cookie Attributes:
+
+Domain: Restricts the cookie to being sent only for requests to the specified domain and its subdomains.
+Path: Restricts the cookie to being sent only for requests to the specified path and its subpaths.
+SameSite: Controls whether the cookie should be sent with cross-site requests (e.g., Lax - only with first-party contexts, Strict - only with same-origin requests).
+HTTPOnly: Prevents client-side JavaScript from accessing the cookie, enhancing security.
+
+5. Express Middleware Output:
+
+Assuming middleware logs the path at each step:
+
+Middleware 1: Processing request...
+Middleware 2: Processing request...
+console.log("URL Path:", "/foo/bar");
+... (rest of middleware and application logic)
+
+6. Express Service Code with fetch:
+
+The fetch will return a Promise with the response object containing the data sent back by the server.
+
+7. MongoDB Query:
+
+Selects all documents where:
+
+cost is greater than 10 AND
+name field contains "fran" anywhere (regex match)
+8. Storing User Passwords:
+
+Never store passwords directly! Use hashing and salting techniques to generate a secure one-way value from the password.
+
+9. Node.js Websocket Console Log:
+
+Depends on the server code. It could log any message sent to the browser through the websocket connection.
+
+10. WebSocket Protocol:
+
+Two-way real-time communication between a web browser and a server. Used for chat applications, live updates, etc.
+
+11. JSX and Curly Braces:
+
+JSX is a syntax extension to JavaScript that allows writing HTML-like structures within JavaScript code.
+Curly braces ({}) in JSX serve two purposes:
+Embed JavaScript expressions: Values of variables, function calls, or any valid JavaScript expression can be placed within curly braces and interpolated into the rendered HTML.
+Create children elements: Elements nested within a parent element are defined inside its opening and closing tags, separated by curly braces.
+
+12. React Component Output:
+
+This code will generate the following HTML in the #root element:
+
+HTML
+<h1>Hello, Sara</h1>
+<h1>Hello, Cahel</h1>
+<h1>Hello, Edite</h1>
+
+13. React Component with List:
+
+This code will generate the following HTML in the #root element:
+
+HTML
+<ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+</ul>
+
+14. React Component with State:
+
+This component displays the text "You clicked 0 times" and a button. Clicking the button updates the state variable count and rerenders the component with the updated text, "You clicked 1 time" (and so on).
+
+15. React Hooks:
+
+React Hooks are functions that let you "hook into" React features like state and lifecycle methods in functional components. They allow component logic to be more modular and organized.
+
+16. useEffect Hook:
+
+The useEffect hook allows you to perform side effects in your functional components, such as fetching data, subscribing to changes, or setting up cleanup logic. It runs after the component renders and can be triggered by changes in state or props.
+
+17. React Router Example:
+
+This code defines a React Router configuration with several routes:
+
+Root path ("/"): Renders the Layout component and its child components based on nested routes.
+Home path ("/"): Renders the Home component within the Layout.
+Blogs path ("/blogs"): Renders the Blogs component within the Layout.
+Contact path ("/contact"): Renders the Contact component within the Layout.
+Catch-all path ("*"): Renders the NoPage component if no other route matches.
+18. npm in Web Development:
+
+npm is the most popular package manager for JavaScript, allowing you to download and manage third-party packages and libraries. It simplifies dependency management and keeps your projects organized.
+
+19. package.json:
+
+The package.json file in an npm project contains metadata about the project, including its name, version, dependencies, scripts, and configuration options. It serves as a manifest file for the project and is used by npm to manage dependencies and build processes.
+
+20. fetch Function:
+
+The fetch function is a browser API for making HTTP requests and fetching data from web servers. It provides a simple and consistent way to send GET, POST, PUT, DELETE, and other types of requests and receive responses.
+
+21. node.js:
+
+node.js is a JavaScript runtime environment built on Chrome's V8 JavaScript engine. It allows you to run JavaScript code outside of a web browser and build server-side applications, command-line tools, and other types of applications.
+
+22. Vite:
+
+Vite is a next-generation bundler for building modern web applications. It uses pre-bundling and server-side rendering to achieve better build times and faster development server performance compared to traditional bundlers.
+
+
+
+//Below is normal notes
+
 Created an IP address for my website. Couldn't figure out how to make it elastic so that might be a problem for future me
 
 Used Routes 53 to register a domain name to my ip. If I ever cahnge the IP on accident I need to go back here to alter the records
